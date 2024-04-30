@@ -1,334 +1,225 @@
-<?php
-session_start();
-include("connection.php");
-include("function.php");
 
-// Get the form data
-if (isset($_POST['name']) && isset($_POST['number']) && isset($_POST['email']) && isset($_POST['message'])) {
-  $name = mysqli_real_escape_string($con, $_POST['name']);
-  $number = mysqli_real_escape_string($con, $_POST['number']);
-  $email = mysqli_real_escape_string($con, $_POST['email']);
-  $message = mysqli_real_escape_string($con, $_POST['message']);
 
-  // Insert the data into the database
-  $sql = "INSERT INTO contact (name, number, email, message)
-          VALUES ('$name', '$number', '$email', '$message')";
-
-  if ($con->query($sql) === TRUE) {
-    echo "New record created successfully";
-  } else {
-    echo "Error: " . $sql . "<br>" . $con->error;
-  }
-} else {
-  echo "Error: One or more form fields are missing.";
-}
-
-// Close the database connection
-$con->close();
-?>
-
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 
 <head>
-  <!-- Basic -->
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <!-- Mobile Metas -->
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <!-- Site Metas -->
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="author" content="" />
-
-  <title>TMS</title>
-
-  <!-- slider stylesheet -->
-  <!-- slider stylesheet -->
-  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-
-  <!-- bootstrap core css -->
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-
-  <!-- fonts style -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Poppins:400,700&display=swap" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
-  <!-- responsive style -->
-  <link href="css/responsive.css" rel="stylesheet" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modernize Free</title>
+  <link rel="shortcut icon" type="image/png" href="../assets/images/logos/favicon.png" />
+  <link rel="stylesheet" href="../assets/css/styles.min.css" />
 </head>
 
-<body class="sub_page">
-  <div class="hero_area">
-    <!-- header section strats -->
-    <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container pt-3">
-          <a class="navbar-brand" href="home.php">
-            <span>
-              TMS
-            </span>
+<body>
+  <!--  Body Wrapper -->
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+    data-sidebar-position="fixed" data-header-position="fixed">
+    <!-- Sidebar Start -->
+    <aside class="left-sidebar">
+      <!-- Sidebar scroll-->
+      <div>
+        <div class="brand-logo d-flex align-items-center justify-content-between">
+          <a href="./index.php" class="text-nowrap logo-img">
+            <h2>TMS</h2>
           </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex ml-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="home.php">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="about.php"> About </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="tender.php"> Tenders </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="trainingpage.php"> E-Resource </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="contact.php">Contact</a>
-                </li>
-              </ul>
-              <div class="user_option">
-                <div class="dropdown">
-                    <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img src="images/user.png" alt="">
+          <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
+            <i class="ti ti-x fs-8"></i>
+          </div>
+        </div>
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
+          <ul id="sidebarnav">
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Home</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./index.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-layout-dashboard"></i>
+                </span>
+                <span class="hide-menu">Dashboard</span>
+              </a>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Components</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./vendors.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Vendors</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./tenders.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-alert-circle"></i>
+                </span>
+                <span class="hide-menu">Tenders</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./bids.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-cards"></i>
+                </span>
+                <span class="hide-menu">Bids</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./contact.php" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">contact</span>
+              </a>
+            </li>
+            </li>
+            <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Reports</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-login"></i>
+                </span>
+                <span class="hide-menu">Login</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="./authentication-register.html" aria-expanded="false">
+                <span>
+                  <i class="ti ti-user-plus"></i>
+                </span>
+                <span class="hide-menu">Register</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+      </div>
+      <!-- End Sidebar scroll-->
+    </aside>
+    <!--  Sidebar End -->
+    <!--  Main wrapper -->
+    <div class="body-wrapper">
+      <!--  Header Start -->
+      <header class="app-header">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <ul class="navbar-nav">
+            <li class="nav-item d-block d-xl-none">
+              <a class="nav-link sidebartoggler nav-icon-hover" id="headerCollapse" href="javascript:void(0)">
+                <i class="ti ti-menu-2"></i>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link nav-icon-hover" href="javascript:void(0)">
+                <i class="ti ti-bell-ringing"></i>
+                <div class="notification bg-primary rounded-circle"></div>
+              </a>
+            </li>
+          </ul>
+          <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+            <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+              <li class="nav-item dropdown">
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                  <div class="message-body">
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-user fs-6"></i>
+                      <p class="mb-0 fs-3">My Profile</p>
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                        <a class="dropdown-item" href="login-vendor.php">Login</a>
-                        <a class="dropdown-item" href="register-vendor.php">Register</a>
-                    </div>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-mail fs-6"></i>
+                      <p class="mb-0 fs-3">My Account</p>
+                    </a>
+                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-list-check fs-6"></i>
+                      <p class="mb-0 fs-3">My Task</p>
+                    </a>
+                    <a href="./authentication-login.html" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                  </div>
                 </div>
-                <form class="form-inline my-2 my-lg-0 ml-0 ml-lg-4 mb-3 mb-lg-0">
-                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                </form>
-              </div>
-            </div>
+              </li>
+            </ul>
           </div>
         </nav>
-      </div>
-    </header>
-    <!-- end header section -->
-  </div>
-
-  <!-- contact section -->
-
-  <section class="contact_section layout_padding">
-    <div class="container">
-
-      <div class="heading_container">
-        <h2>
-          Request A Call Back
-        </h2>
-      </div>
-      <div class="">
-        <div class="">
-          <div class="row">
-            <div class="col-md-9 mx-auto">
-           
-
-              <div class="contact-form">
-               
-                <form action="contact.php" method="post">
-  <div>
-    <input type="text" name="name" placeholder="name" required>
-  </div>
-  <div>
-    <input type="number" name="number" placeholder="number" required>
-  </div>
-  <div>
-    <input type="email" name="email" placeholder="email" required>
-  </div>
-  <div>
-    <input type="text" name="message" placeholder="message" class="input_message" required>
-  </div>
-  <div class="d-flex justify-content-center">
-    <button type="submit" class="btn_on-hover">
-      Send
+      </header>
+      <!--  Header End -->
+      <div class="container-fluid">
+        <div class="container-fluid">
+        <table class="table">
+        <thead>
+              <tr>
+                
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Message</th>
+                <th>Date</th>
+                
+                <th colspan="2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <?php          
+                  include("connection.php");
+                  include("function.php");
+                  
+                  $sql="SELECT * from contact";
+                  $result=$con-> query($sql);
+                  $count=1;
+                  if ($result-> num_rows > 0){
+                  while ($row=$result-> fetch_assoc()) {
+  
+              ?>
+              <tr>
+                
+                <td><?=$row["name"]?></td>
+                <td><?=$row["number"]?></td>
+                <td><?=$row["email"]?></td>
+                <td><?=$row["message"]?></td>
+                <td><?=$row["date"]?></td>
+                <td>
+    <button type="button" class="btn btn-success" style="height:40px"><a href="edit.php?editid=<?php echo $row['email']?>" class="text-white">
+      Edit
+      </a>
     </button>
-</form>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="map_img-box">
-        <img src="images/map-img.png" alt="">
-      </div>
-    </div>
-  </section>
+</td>
+<td> 
+    <button type="button" class="btn btn-danger" style="height:40px"><a href="delete.php?deletecontact=<?php echo $row['email']?>" class="text-white">
+      Delete
+      </a>
+    </button>
+</td>
 
 
-  <!-- end contact section -->
+                <?php
+                    $count=$count+1;
+                    
+                }
+                }
+              ?>
 
-
-  <!-- info section -->
-   <!-- info section -->
-   <section class="info_section ">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-3">
-          <div class="info_contact">
-            <h5>
-              About Shop
-            </h5>
-      <div>
-        <div class="img-box">
-          <img src="images/location-white.png" width="18px" alt="">
-        </div>
-        <p>
-          Address: 123 MAGADI ROAD, RONGAI - KAJIADO, KENYA 
-        </p>
-      </div>
-      <div>
-        <div class="img-box">
-          <img src="images/telephone-white.png" width="12px" alt="">
-        </div>
-        <p>
-          +254 716543589
-        </p>
-      </div>
-      <div>
-        <div class="img-box">
-          <img src="images/envelope-white.png" width="18px" alt="">
-        </div>
-        <p>
-        TMS@gmail.com
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <div class="info_info">
-      <h5>
-        Information
-      </h5>
-      <p>
-        Welcome to our Tender Management System. We provide efficient solutions for managing and processing tenders.
-      </p>
-    </div>
-  </div>
-
-  <div class="col-md-3">
-    <div class="info_insta">
-      <h5>
-        Connect with Us
-      </h5>
-      <div class="insta_container">
-        <div>
-          <a href="https://www.instagram.com">
-            <div class="insta-box b-1">
-              <img src="images/insta.png" alt="">
-            </div>
-          </a>
-          <a href="https://www.instagram.com">
-            <div class="insta-box b-2">
-              <img src="images/insta.png" alt="">
-            </div>
-          </a>
-        </div>
-
-        <div>
-          <a href="https://www.instagram.com">
-            <div class="insta-box b-3">
-              <img src="images/insta.png" alt="">
-            </div>
-          </a>
-          <a href="https://www.instagram.com">
-            <div class="insta-box b-4">
-              <img src="images/insta.png" alt="">
-            </div>
-          </a>
-        </div>
-        <div>
-          <a href="https://www.instagram.com">
-            <div class="insta-box b-3">
-              <img src="images/insta.png" alt="">
-            </div>
-          </a>
-          <a href="https://www.instagram.com">
-            <div class="insta-box b-4">
-              <img src="images/insta.png" alt="">
-            </div>
-          </a>
         </div>
       </div>
     </div>
   </div>
-  <div class="col-md-3">
-    <div class="info_form ">
-      <h5>
-        Newsletter
-      </h5>
-      <form action="">
-        <input type="email" placeholder="Enter your email">
-        <button>
-          Subscribe
-        </button>
-      </form>
-      <div class="social_box">
-        <a href="https://www.facebook.com">
-          <img src="images/fb.png" alt="">
-        </a>
-        <a href="https://www.twitter.com">
-          <img src="images/twitter.png" alt="">
-        </a>
-        <a href="https://www.linkedin.com">
-          <img src="images/linkedin.png" alt="">
-        </a>
-        <a href="https://www.youtube.com">
-          <img src="images/youtube.png" alt="">
-        </a>
-      </div>
-    </div>
-  </div>
-</div>
-</DIV>
-
-    </div>
-  </section>
-
-  <!-- end info_section -->
 
 
-  <!-- footer section -->
-  <section class="container-fluid footer_section">
-    <p>
-        <p class="copyright">
-            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Tender Management System
-          </p>
-    </p>
-  </section>
-  <!-- footer section -->
-
-  <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
-  </script>
-  <!-- owl carousel script 
-    -->
-  <script type="text/javascript">
-    $(".owl-carousel").owlCarousel({
-      loop: true,
-      margin: 0,
-      navText: [],
-      center: true,
-      autoplay: true,
-      autoplayHoverPause: true,
-      responsive: {
-        0: {
-          items: 1
-        },
-        1000: {
-          items: 3
-        }
-      }
-    });
-  </script>
-  <!-- end owl carousel script -->
-    <?php  ?>
+  <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+  <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
+  <script src="../assets/js/app.min.js"></script>
+  <script src="../assets/libs/simplebar/dist/simplebar.js"></script>
 </body>
+
 </html>

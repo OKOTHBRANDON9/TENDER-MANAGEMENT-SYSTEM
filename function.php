@@ -31,9 +31,10 @@ function random_num($length)
 
 
 
-function get_user_by_email($con, $email) {
-    $query = "SELECT * FROM vendor_register WHERE email = '$email'";
-    $result = mysqli_query($con, $query);
-    $user = mysqli_fetch_assoc($result);
-    return $user;
-  }
+
+
+  
+  
+  
+  
+ 
