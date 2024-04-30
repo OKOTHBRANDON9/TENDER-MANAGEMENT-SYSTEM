@@ -1,0 +1,210 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+* > * {
+    font-family: 'Poppins', sans-serif;
+
+  }
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Set your desired background color */
+    color: #333; /* Set the default text color */
+    line-height: 1.6;
+  }
+    
+
+
+:root{
+    --color-dark: #151C35;
+    --color-secodary-dark: #464C70;
+    --color-primary: #EE709D;
+    --color-text: #8297E2;
+    --color-light: #EBEBFB;
+}
+
+.container{
+/* height:98vh */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.board{
+    max-width: 987px;
+    width: 100%;
+    background-color: var(--color-dark);
+    text-align: center;
+    border-radius: 8px;
+    padding: 4em 0;
+}
+
+.text-light{
+    color: var(--color-light);
+}
+
+.swiper {
+    width: 600px;
+    height: auto;
+  }
+
+.swiper .swiper-slide .flex{
+    margin: 3em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.swiper .swiper-slide .comments{
+    background-color: var(--color-light);
+    padding: 1.5em 2em;
+    width: 50%;
+    border-radius: 5px;
+    font-size: .9em;
+    position: relative;
+}
+
+.swiper .swiper-slide .comments::after{
+    content: '';
+    position: absolute;
+    bottom: -19px;
+    left: 45%;
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid var(--color-light);
+    z-index: -99;
+}
+
+
+.swiper .profile{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1em;
+}
+
+
+
+.swiper .profile > a{
+    text-decoration: none;
+    color: var(--color-light);
+}
+
+.swiper .profile > span{
+    color: var(--color-text);
+    font-size: .8em;
+}
+
+.swiper .swiper-button-prev, .swiper-button-next{
+    color: var(--color-text);
+    display: none;
+} 
+
+@media (min-width: 320px) {
+    .board{
+        width: auto;
+    }
+
+    .swiper {
+        width: 320px;
+      }
+
+      .board > h1, p{
+          padding: 0 2em;
+      }
+}
+
+@media (min-width: 768px) {
+    .board{
+        width: 100%;
+    }
+
+    .swiper {
+        width: 600px;
+      }
+
+    .swiper .swiper-button-prev, .swiper-button-next{
+        display: initial;
+    }
+
+}
+/*review section css*/
+
+
+
+/*FAQs*/
+.faq-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .faq-list li {
+    margin-bottom: 10px;
+  }
+
+
+  /*login and register*/
+  body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  padding: 0;
+  margin: 0;
+}
+
+.login-container, .register-container{
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 8px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input[type="submit"] {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+p {
+  text-align: center;
+}
+
+
+
+
